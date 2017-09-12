@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="myModule" ng-controller="myCtrl" >
+<head>
+<meta charset="UTF-8">
+
+<title>Contact Book</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="ngStorage.min.js"></script>
+<script src="app.js"></script>
+
+<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+
+<div ng-if="Checker == 'Yes'"> {{assignValueMethod()}}</div>
+
+<div class="container">
+	<div class="row panel headingTop">
+      <div class="panel-heading">
+        <h2 class="panel-title">Contact Book</h2>
+    </div>
+</div>
+
+<div class="row" >
+
+		<div class="col-xs-6 ">
+			<a href="#" class="row " ng-repeat="x in Name track by $index"  >
+				<div class="col-xs-12 contactList" ng-click="editContact($index)">
+					<div class="col-xs-4 EmailPortion ">
+						{{x}}<br>
+						<h6 >{{Email[$index]}}</h6>
+					</div>
+					<div class="col-xs-4 glyphicon1">
+						<span class="glyphicon glyphicon-earphone"></span>
+					</div>
+					<div class="col-xs-4 PhonePortion ">
+						{{Phone[$index]}}
+					</div>
+				</div>
+			</a>
+		</div>
+
+		<div class="col-xs-6 Formdiv">
+			<form class="form-group" style="margin-top: 15px;">
+				<input class="form-control" type="text" ng-model="Contact.Name" placeholder="Enter Name">
+				<input class="form-control" type="email" ng-model="Contact.Email" placeholder="Enter Email">
+				<input class="form-control" type="text" ng-model="Contact.Phone" placeholder="Phone Number">
+				<button class="btn btn-default btn-success" ng-click="addContact()"> Submit </button>
+			</form>
+		</div>
+
+</div>
+
+</body>
+</html>
